@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RupeeTest {
 
@@ -28,13 +28,13 @@ public class RupeeTest {
     public void shouldAssertA10RupeeIsNotSameAsOther10Rupee() throws InvalidValueException {
         Rupee tenRupee = new Rupee(10);
         Rupee anotherTenRupee = new Rupee(10);
-        assertThat(tenRupee.equals(anotherTenRupee), is(false));
+        assertNotSame(tenRupee, anotherTenRupee);
     }
 
     @Test
     public void shouldAssertValueOfA10RupeeIsSameAsValueOfAnother10Rupee() throws InvalidValueException {
         Rupee tenRupee = new Rupee(10);
         Rupee anotherTenRupee = new Rupee(10);
-        assertThat(tenRupee.value(), is(equalTo(anotherTenRupee.value())));
+        assertEquals(tenRupee, anotherTenRupee);
     }
 }

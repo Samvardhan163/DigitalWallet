@@ -20,7 +20,7 @@ public class Rupee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rupee rupee = (Rupee) o;
-        return Float.compare(rupee.hashCode(), hashCode()) == 0;
+        return Float.compare(rupee.value, this.value) == 0;
     }
 
     public float value(){
