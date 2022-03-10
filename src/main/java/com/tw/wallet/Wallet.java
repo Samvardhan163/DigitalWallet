@@ -1,17 +1,17 @@
 package com.tw.wallet;
 
 public class Wallet {
-    private int amount;
+    private float balance;
 
     public Wallet() {
-        this.amount = 0;
+        this.balance = 0;
     }
 
-    public int amount() {
-        return amount;
+    public float balance() {
+        return balance;
     }
 
-    public void addAmount(int amount) {
-        this.amount = this.amount + amount;
+    public void add(float rupee) {
+        balance = balance + rupee;
     }
 }
