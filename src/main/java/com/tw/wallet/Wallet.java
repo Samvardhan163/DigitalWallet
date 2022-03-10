@@ -1,17 +1,21 @@
 package com.tw.wallet;
 
-public class Wallet {
-    private float balance;
+import com.tw.money.Rupee;
+import exceptions.InvalidValueException;
 
-    public Wallet() {
-        this.balance = 0;
+public class Wallet {
+    private Rupee balance;
+
+    public Wallet() throws InvalidValueException {
+        this.balance =  new Rupee(0);
     }
 
-    public float balance() {
+    public Rupee balance() {
         return balance;
     }
 
-    public void add(float rupee) {
-        balance = balance + rupee;
+    public void add(Rupee rupee) throws InvalidValueException {
+        balance = balance.add(rupee);
     }
+
 }
