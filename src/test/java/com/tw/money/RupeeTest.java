@@ -21,7 +21,7 @@ public class RupeeTest {
         Rupee rupee2 = new Rupee(7);
         Rupee result = rupee1.add(rupee2);
         Rupee expected = new Rupee(10);
-        assertThat(result.value(), is(equalTo(expected.value())));
+        assertThat(result, is(equalTo(expected)));
     }
 
     @Test

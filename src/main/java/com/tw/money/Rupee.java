@@ -2,8 +2,6 @@ package com.tw.money;
 
 import exceptions.InvalidValueException;
 
-import java.util.Objects;
-
 public class Rupee {
 
     private final float value;
@@ -21,10 +19,6 @@ public class Rupee {
         if (o == null || getClass() != o.getClass()) return false;
         Rupee rupee = (Rupee) o;
         return Float.compare(rupee.value, this.value) == 0;
-    }
-
-    public float value(){
-        return value;
     }
 
     public Rupee add(Rupee rupee) throws InvalidValueException {
