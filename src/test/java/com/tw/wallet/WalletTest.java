@@ -11,9 +11,9 @@ public class WalletTest {
 
     @Test
     public void shouldAdd15RupeesInWallet(){
-        int expected = wallet.getAmount() + 15;
+        int expected = wallet.amount() + 15;
         wallet.addAmount(15);
-        int result = wallet.getAmount();
+        int result = wallet.amount();
         assertThat(result, is(expected));
     }
 }

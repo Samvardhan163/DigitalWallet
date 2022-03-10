@@ -7,8 +7,7 @@ public class Wallet {
         this.amount = 0;
     }
 
-
-    public int getAmount() {
+    public int amount() {
         return amount;
     }
 
