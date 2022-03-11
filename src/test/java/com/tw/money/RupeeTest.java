@@ -1,5 +1,6 @@
 package com.tw.money;
 
+import com.tw.wallet.Wallet;
 import exceptions.InvalidValueException;
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +37,18 @@ public class RupeeTest {
         Rupee tenRupee = new Rupee(10);
         Rupee anotherTenRupee = new Rupee(10);
         assertEquals(tenRupee, anotherTenRupee);
+    }
+
+    @Test
+    void shouldAssert10RupeeIsNotEqualToNull() throws InvalidValueException {
+        Rupee tenRupee = new Rupee(10);
+        assertNotSame(null,tenRupee);
+    }
+
+    @Test
+    void shouldAssert10RupeeIsNotEqualToAWallet() throws InvalidValueException {
+        Rupee tenRupee = new Rupee(10);
+        Wallet wallet = new Wallet();
+        assertNotSame(wallet, tenRupee);
     }
 }

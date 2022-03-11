@@ -16,7 +16,7 @@ public class Rupee {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         Rupee rupee = (Rupee) o;
         return Float.compare(rupee.value, this.value) == 0;
     }
