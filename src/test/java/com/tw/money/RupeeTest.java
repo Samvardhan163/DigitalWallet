@@ -18,11 +18,11 @@ public class RupeeTest {
 
     @Test
     public void shouldAssertAdding3RupeeAnd7RupeeIsEqualTo10Rupee() throws InvalidValueException {
-        Rupee rupee1 = new Rupee(3);
-        Rupee rupee2 = new Rupee(7);
-        Rupee result = rupee1.add(rupee2);
-        Rupee expected = new Rupee(10);
-        assertThat(result, is(equalTo(expected)));
+        Rupee threeRupee = new Rupee(3);
+        Rupee sevenRupee = new Rupee(7);
+        Rupee tenRupee = new Rupee(10);
+        Rupee sumOfSevenAndThreeRupees = threeRupee.add(sevenRupee);
+        assertThat(sumOfSevenAndThreeRupees, is(equalTo(tenRupee)));
     }
 
     @Test
@@ -50,5 +50,22 @@ public class RupeeTest {
         Rupee tenRupee = new Rupee(10);
         Wallet wallet = new Wallet();
         assertNotEquals(wallet, tenRupee);
+    }
+
+    @Test
+    void shouldAssert76RupeeIsEqualTo1USD() throws InvalidValueException {
+        Rupee seventySixRupee = new Rupee(76);
+        USD oneUSD = new USD(1);
+        assertThat(seventySixRupee, is(equalTo(oneUSD)));
+        assertThat(oneUSD, is(equalTo(seventySixRupee)));
+        // a = b it should always mean b = a
+
+    }
+
+    @Test
+    void shouldAssert1RupeeIsEqualTo0Point012() throws InvalidValueException {
+        Rupee oneRupee = new Rupee(1);
+        Euro pointZeroOneTwoEuro = new Euro(0.012);
+        assertThat(oneRupee, is(equalTo(pointZeroOneTwoEuro)));
     }
 }
