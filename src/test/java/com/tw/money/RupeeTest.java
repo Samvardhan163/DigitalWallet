@@ -17,7 +17,7 @@ public class RupeeTest {
     }
 
     @Test
-    public void shouldReturnNew10RupeeIf3RupeeAnd7RupeeIsAdded() throws InvalidValueException {
+    public void shouldAssertAdding3RupeeAnd7RupeeIsEqualTo10Rupee() throws InvalidValueException {
         Rupee rupee1 = new Rupee(3);
         Rupee rupee2 = new Rupee(7);
         Rupee result = rupee1.add(rupee2);
@@ -42,13 +42,13 @@ public class RupeeTest {
     @Test
     void shouldAssert10RupeeIsNotEqualToNull() throws InvalidValueException {
         Rupee tenRupee = new Rupee(10);
-        assertNotSame(null,tenRupee);
+        assertNotEquals(null,tenRupee);
     }
 
     @Test
     void shouldAssert10RupeeIsNotEqualToAWallet() throws InvalidValueException {
         Rupee tenRupee = new Rupee(10);
         Wallet wallet = new Wallet();
-        assertNotSame(wallet, tenRupee);
+        assertNotEquals(wallet, tenRupee);
     }
 }
