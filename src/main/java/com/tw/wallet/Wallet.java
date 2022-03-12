@@ -1,16 +1,15 @@
 package com.tw.wallet;
 
-import com.tw.money.Currency;
 import com.tw.money.Money;
 import exceptions.InvalidValueException;
 
-import static com.tw.money.Money.newRupee;
+import static com.tw.money.Money.createRupee;
 
 public class Wallet {
     private Money balance;
 
     public Wallet() throws InvalidValueException {
-        this.balance =  newRupee(0);
+        this.balance =  createRupee(0);
     }
 
     public Money balance() {

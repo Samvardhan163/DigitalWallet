@@ -1,6 +1,5 @@
 package com.tw.money;
 
-import com.tw.wallet.Wallet;
 import exceptions.InvalidValueException;
 import org.junit.jupiter.api.Test;
 
@@ -9,30 +8,29 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MoneyTest {
 
     @Test
-    void shouldNotBeAbleToCreateInvalidRupee() {
-        assertThrows(InvalidValueException.class, () -> newRupee(-1));
+    void shouldNotBeAbleToCreateNegativeRupee() {
+        assertThrows(InvalidValueException.class, () -> createRupee(-1));
     }
 
     @Test
-    void shouldNotBeAbleToCreateInvalidUSDollar() {
-        assertThrows(InvalidValueException.class, () -> newUSDollar(-1));
+    void shouldNotBeAbleToCreateNegativeUSDollar() {
+        assertThrows(InvalidValueException.class, () -> createUsDollar(-1));
     }
 
     @Test
-    void shouldNotBeAbleToCreateInvalidEuro() {
-        assertThrows(InvalidValueException.class, () -> newEuro(-1));
+    void shouldNotBeAbleToCreateNegativeEuro() {
+        assertThrows(InvalidValueException.class, () -> createEuro(-1));
     }
 
     @Test
-    public void shouldAssertAdding3RupeeAnd7RupeeIsEqualTo10Rupee() throws InvalidValueException {
-        Money threeRupee = newRupee(3);
-        Money sevenRupee = newRupee(7);
-        Money tenRupee = newRupee(10);
+    public void shouldAssertAddingThreeRupeeAndSevenRupeeIsEqualToTenRupee() throws InvalidValueException {
+        Money threeRupee = createRupee(3);
+        Money sevenRupee = createRupee(7);
+        Money tenRupee = createRupee(10);
 
         Money sumOfSevenAndThreeRupees = threeRupee.add(sevenRupee);
 
@@ -40,49 +38,48 @@ public class MoneyTest {
     }
 
     @Test
-    public void shouldAssertA10RupeeIsNotSameAsOther10Rupee() throws InvalidValueException {
-        Money tenRupee = newRupee(10);
-        Money anotherTenRupee = newRupee(10);
+    public void shouldAssertATenRupeeIsNotSameAnotherTenRupee() throws InvalidValueException {
+        Money tenRupee = createRupee(10);
+        Money anotherTenRupee = createRupee(10);
 
         assertNotSame(tenRupee, anotherTenRupee);
     }
 
     @Test
-    public void shouldAssertValueOfA10RupeeIsSameAsValueOfAnother10Rupee() throws InvalidValueException {
-        Money tenRupee = newRupee(10);
-        Money anotherTenRupee = newRupee(10);
+    public void shouldAssertValueOfATenRupeeIsSameAsValueOfAnotherTenRupee() throws InvalidValueException {
+        Money tenRupee = createRupee(10);
+        Money anotherTenRupee = createRupee(10);
 
         assertEquals(tenRupee, anotherTenRupee);
     }
 
     @Test
-    void shouldAssert10RupeeIsNotEqualToNull() throws InvalidValueException {
-        Money tenRupee = newRupee(10);
+    void shouldAssertTenRupeeIsNotEqualToNull() throws InvalidValueException {
+        Money tenRupee = createRupee(10);
 
-        assertNotEquals(null,tenRupee);
+        assertNotEquals(null, tenRupee);
     }
 
     @Test
-    void shouldAssert10RupeeIsNotEqualToAWallet() throws InvalidValueException {
-        Money tenRupee = newRupee(10);
-        Wallet wallet = new Wallet();
+    void shouldAssertTenRupeeIsNotEqualToAWallet() throws InvalidValueException {
+        Money tenRupee = createRupee(10);
 
-        assertNotEquals(wallet, tenRupee);
+        assertNotEquals(tenRupee, new Object());
     }
 
 
     @Test
-    void shouldAssertThat76RupeeIsEqualTo1USDollar() throws InvalidValueException {
-        Money seventySixRupee = newRupee(76);
-        Money oneUSDollar = newUSDollar(1);
+    void shouldAssertThatSeventySixRupeeIsEqualToOneUSDollar() throws InvalidValueException {
+        Money seventySixRupee = createRupee(76);
+        Money oneUSDollar = createUsDollar(1);
 
         assertThat(seventySixRupee, is(equalTo(oneUSDollar)));
     }
 
     @Test
-    void shouldAssertThat1RupeeIsEqualTo0Point012Euro() throws InvalidValueException {
-        Money oneRupee = newRupee(1);
-        Money pointZeroOneTwoEuro = newEuro(0.012);
+    void shouldAssertThatOneRupeeIsEqualToZeroPointZeroOneTwoEuro() throws InvalidValueException {
+        Money oneRupee = createRupee(1);
+        Money pointZeroOneTwoEuro = createEuro(0.012);
 
         assertThat(oneRupee, is(equalTo(pointZeroOneTwoEuro)));
     }

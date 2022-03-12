@@ -9,23 +9,23 @@ public class Money {
     private final Currency currency;
 
     private Money(double value, Currency currency) throws InvalidValueException {
-        if(value < 0){
+        if (value < 0) {
             throw new InvalidValueException();
         }
         this.value = value;
         this.currency = currency;
     }
 
-    public static Money newRupee(double value) throws InvalidValueException {
-        return new Money(value, Currency.RUPEE);
+    public static Money createRupee(double value) throws InvalidValueException {
+        return new Money(value, Currency.rupee);
     }
 
-    public static Money newUSDollar(double value) throws InvalidValueException {
-        return new Money(value, Currency.USDOLLAR);
+    public static Money createUsDollar(double value) throws InvalidValueException {
+        return new Money(value, Currency.usDollar);
     }
 
-    public static Money newEuro(double value) throws InvalidValueException {
-        return new Money(value, Currency.EURO);
+    public static Money createEuro(double value) throws InvalidValueException {
+        return new Money(value, Currency.euro);
     }
 
     @Override
@@ -44,12 +44,10 @@ public class Money {
     }
 
     public Money add(Money anotherMoney) throws InvalidValueException {
-        if(this.currency == anotherMoney.currency){
+        if (this.currency == anotherMoney.currency) {
             double newValue = this.value + anotherMoney.value;
-            return new Money( newValue,this.currency);
+            return new Money(newValue, this.currency);
         }
-
-        // add feature to add other currency
         return null;
     }
 }
