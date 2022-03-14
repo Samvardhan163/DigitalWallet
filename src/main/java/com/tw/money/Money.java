@@ -44,10 +44,8 @@ public class Money {
     }
 
     public Money add(Money anotherMoney) throws InvalidValueException {
-        if (this.currency == anotherMoney.currency) {
-            double newValue = this.value + anotherMoney.value;
-            return new Money(newValue, this.currency);
-        }
-        return null;
+        double newValue = this.value + anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
+        return new Money((float)newValue, this.currency);
+
     }
 }
