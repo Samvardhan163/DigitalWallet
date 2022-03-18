@@ -35,7 +35,7 @@ public class Money {
         if (o == null || getClass() != o.getClass()) return false;
 
         Money anotherMoney = (Money) o;
-        return currency.convertToBaseFactor(value) == anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
+        return this.currency.convertToBaseFactor(value) == anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
     }
 
     @Override
@@ -44,8 +44,18 @@ public class Money {
     }
 
     public Money add(Money anotherMoney) throws InvalidValueException {
-        double newValue = this.value + anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
-        return new Money((float)newValue, this.currency);
+        double newValue = this.currency.convertToBaseFactor(value) + anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
+        return new Money((float) newValue, Currency.rupee);
 
+    }
+
+    public Money subtract(Money anotherMoney) throws InvalidValueException {
+        double newValue = this.value - anotherMoney.currency.convertToBaseFactor(anotherMoney.value);
+        return new Money((float) newValue, this.currency);
+    }
+
+    public Money convertIntoPreferredCurrency(Currency currencyType) throws InvalidValueException {
+        double newValue = this.currency.convertToPreferredBaseFactor(this.value, currencyType);
+        return new Money(Math.round(newValue * 100.0) / 100.0, currencyType);
     }
 }

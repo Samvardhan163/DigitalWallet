@@ -1,5 +1,6 @@
 package com.tw.wallet;
 
+import com.tw.money.Currency;
 import com.tw.money.Money;
 import exceptions.InvalidValueException;
 
@@ -9,7 +10,7 @@ public class Wallet {
     private Money balance;
 
     public Wallet() throws InvalidValueException {
-        this.balance =  createRupee(0);
+        this.balance = createRupee(0);
     }
 
     public Money balance() {
@@ -20,4 +21,11 @@ public class Wallet {
         balance = balance.add(anotherMoney);
     }
 
+    public void take(Money anotherMoney) throws InvalidValueException {
+        balance = balance.subtract(anotherMoney);
+    }
+
+    public void convertIntoPreferredCurrency(Currency currencyType) throws InvalidValueException {
+        balance=balance.convertIntoPreferredCurrency(currencyType);
+    }
 }
